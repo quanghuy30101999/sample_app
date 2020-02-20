@@ -16,8 +16,24 @@ class MicropostsController < ApplicationController
         @micropost.destroy
         flash[:success] = "Micropost deleted"
         redirect_to request.referrer || root_url
-      end
-  
+    end
+
+    def show 
+    end
+
+    def edit
+      @micropost = Micropost.find(params[:id])
+    end
+
+    def update  #cop password update
+      @micropost = Micropost.find(params[:id])
+      if @micropost.update(micropost_params)
+        flash[:success] = "Profile updated"
+        redirect_to root_url
+      else
+        render 'edit'
+    end
+  end
       private
 
       def micropost_params
