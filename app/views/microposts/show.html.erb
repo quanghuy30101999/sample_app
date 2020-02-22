@@ -1,0 +1,7 @@
+<%= @micropost.user.name %> </br></br>
+<%= @micropost.content%></br></br>
+
+NumberComment: <%= @micropost.comments.count%>
+
+<%= render @micropost.comments %></p>
+<%= render 'comments/form' %></p>

@@ -11,6 +11,7 @@
       <span class="edit"><%= link_to 'edit', edit_micropost_url(micropost.id) %>
       <%= link_to "delete", micropost, method: :delete,
                                        data: { confirm: "You sure?" } %>
+      <span><%= link_to 'detail' , micropost_url(micropost.id)%></span>                                 
     <% end %>
   </span>
 </li>
