@@ -27,7 +27,7 @@ class MicropostsController < ApplicationController
       @micropost = Micropost.find(params[:id])
     end
 
-    def update  #cop password update
+    def update 
       @micropost = Micropost.find(params[:id])
       if @micropost.update(micropost_params)
         flash[:success] = "Profile updated"

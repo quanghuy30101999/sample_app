@@ -1,1 +1,13 @@
+<br>
+<b><%= comment.user.name %></b> 
+<br>
 <%= comment.body %>
+<br>
+<%= time_ago_in_words(comment.created_at)%>
+<br>
+<% unless current_user == nil %>
+  <% if current_user.id == @micropost.user_id %>
+    <%= link_to 'Edit', edit_micropost_comment_url(comment.micropost,comment) %>
+  <% end %>
+<% end %>
+<p> <%= link_to 'Delete',[comment.micropost,comment], method: :delete, data: {confirm: "Are you sure"} %> </p>
