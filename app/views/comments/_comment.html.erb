@@ -6,8 +6,10 @@
 <%= time_ago_in_words(comment.created_at)%>
 <br>
 <% unless current_user == nil %>
-  <% if current_user.id == @micropost.user_id %>
+  <% if current_user?(comment.user)%>
     <%= link_to 'Edit', edit_micropost_comment_url(comment.micropost,comment) %>
+    <p> <%= link_to 'Delete',[comment.micropost,comment], method: :delete, data: {confirm: "Are you sure"} %> </p>
+    <% elsif current_user?(@micropost.user) %>
+    <p> <%= link_to 'Delete',[comment.micropost,comment], method: :delete, data: {confirm: "Are you sure"} %> </p>
   <% end %>
 <% end %>
-<p> <%= link_to 'Delete',[comment.micropost,comment], method: :delete, data: {confirm: "Are you sure"} %> </p>
